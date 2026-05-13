@@ -118,3 +118,4 @@ if TOKEN is None:
     print("❌ DISCORD_TOKEN not found in environment variables. Please check your .env file.")
 else:
     bot.run(TOKEN)
+# Тестовое изменение для Git
