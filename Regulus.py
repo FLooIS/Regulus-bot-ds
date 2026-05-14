@@ -20,7 +20,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 
 
-# 1. Добавляем событие синхронизации
+# Добавляем событие синхронизации
 @bot.event
 async def on_ready():
     try:
@@ -40,7 +40,6 @@ async def calc(interaction: discord.Interaction, poison: int, stacks: int):
     last_poison = poison - total_ticks + 1
     final_damage = (poison + last_poison) * total_ticks // 2
     
-    # Вместо ctx.send используем interaction.response.send_message
     await interaction.response.send_message(
         f"🧪 **Яд:** {poison} | **Акселерант:** {stacks}\n"
         f"💥 Итоговый урон: **{final_damage}**"
@@ -73,7 +72,7 @@ ELITES_DATA = {
     ]
 }
 
-# 1. Сначала создаем список биомов для выбора
+# Сначала создаем список биомов для выбора
 BIOMES = [app_commands.Choice[str](name=name, value=name) for name in ELITES_DATA.keys()]
 
 @bot.tree.command(name="elite", description="Узнать, кто может встретиться следующим")
@@ -96,7 +95,7 @@ async def elite(interaction: discord.Interaction, biome: str, last_elite: str):
     
     await interaction.response.send_message(response_text)
 
-# 2. А теперь — магия автодополнения для второго поля
+# Автодополнения для второго поля
 @elite.autocomplete('last_elite')
 async def elite_autocomplete(interaction: discord.Interaction, current: str):
     # Достаем то, что юзер УЖЕ выбрал в поле 'biome'
@@ -118,4 +117,3 @@ if TOKEN is None:
     print("❌ DISCORD_TOKEN not found in environment variables. Please check your .env file.")
 else:
     bot.run(TOKEN)
-# Тестовое изменение для Git
