@@ -113,6 +113,10 @@ async def elite_autocomplete(interaction: discord.Interaction, current: str):
         for choice in choices if current.lower() in choice.lower()
     ]
 
+@bot.tree.command(name ="password", description="Я знаю пароль, я вижу ориентир")
+async def password(interaction: discord.Interaction,):
+    await interaction.response.send_message("Абибиботик: ||8841||")
+
 if TOKEN is None:
     print("❌ DISCORD_TOKEN not found in environment variables. Please check your .env file.")
 else:
