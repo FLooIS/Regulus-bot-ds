@@ -31,7 +31,9 @@ async def on_ready():
     except Exception as e:
         print(f"❌ Ошибка синхронизации: {e}")
 
-# 2. Создаем слэш-команду вместо обычной
+# ==========================================
+# КОМАНДА: Расчёт урона яда под доп. проками
+# ==========================================
 @bot.tree.command(name="calc", description="Рассчитать суммарный урон яда с акселерантом")
 @app_commands.describe(poison="Текущее количество яда", stacks="Стаки акселеранта")
 async def calc(interaction: discord.Interaction, poison: int, stacks: int):
@@ -44,7 +46,9 @@ async def calc(interaction: discord.Interaction, poison: int, stacks: int):
         f"🧪 **Яд:** {poison} | **Акселерант:** {stacks}\n"
         f"💥 Итоговый урон: **{final_damage}**"
     )
-
+# ==========================================
+# КОМАНДА: Элиты
+# ==========================================
 ELITES_DATA = {
     "Заросли": [
         "Никого не встречал", 
@@ -113,6 +117,9 @@ async def elite_autocomplete(interaction: discord.Interaction, current: str):
         for choice in choices if current.lower() in choice.lower()
     ]
 
+# ==========================================
+# КОМАНДА: Пароли
+# ==========================================
 @bot.tree.command(name ="password", description="Я знаю пароль, я вижу ориентир")
 async def password(interaction: discord.Interaction,):
     await interaction.response.send_message("Абибиботик: ||8841||")
