@@ -37,7 +37,6 @@ async def on_ready():
 @bot.tree.command(name="calc", description="Рассчитать суммарный урон яда с акселерантом")
 @app_commands.describe(poison="Текущее количество яда", stacks="Стаки акселеранта")
 async def calc(interaction: discord.Interaction, poison: int, stacks: int):
-    # В слэш-командах вместо ctx используется interaction
     total_ticks = min(poison, 1 + stacks)
     last_poison = poison - total_ticks + 1
     final_damage = (poison + last_poison) * total_ticks // 2
@@ -70,7 +69,7 @@ ELITES_DATA = {
     ],
     "Чертог": [
         "Никого не встречал",
-        "Рыцари-гниды(Knight's)",
+        "Банда рыцарей(Knight's)",
         "Меха-Рыцарь(Mecha Knight)",
         "Чистилище душ(Soul Nexus)"
     ]
